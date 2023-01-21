@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.http import HttpResponseNotFound
 
 author_info = {
     "name": "Евгений",
@@ -6,6 +7,15 @@ author_info = {
     "phone": "8-900-600-10-20",
     "email": "eyurchenko@specialist.ru"
 }
+
+items = [
+    {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
+    {"id": 2, "name": "Куртка кожаная", "quantity": 2},
+    {"id": 5, "name": "Coca-cola 1 литр", "quantity": 12},
+    {"id": 7, "name": "Картофель фри", "quantity": 0},
+    {"id": 8, "name": "Кепка", "quantity": 124},
+    {"id": 10, "name": "Новый товар", "quantity": 5},
+]
 
 
 def main_page(request):
@@ -24,3 +34,26 @@ def about(request):
     email: <b>{author_info['email']}</b><br>
     """
     return HttpResponse(result)
+
+
+# item/1
+# item/2
+# item/8
+# item/10
+def item_page(request, id):
+    for item in items:
+        if item['id'] == id:
+            page = f"""
+            <h1>{item['name']}</h1>
+            <p> Количество: {item['quantity']} </p>
+            """
+            return HttpResponse(page)
+    return HttpResponseNotFound(f"Товар с id={id} не найден")
+
+
+def items_list(request):
+    page = "<h1>Список товаров</h1><ol>"
+    for item in items:
+        page += f"<li>{item['name']}</li>"
+    page += "</ol>"
+    return HttpResponse(page)
