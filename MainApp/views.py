@@ -19,11 +19,7 @@ items = [
 
 
 def main_page(request):
-    result = """
-    <h1>"Изучаем django!"</h1>
-    <strong>Автор</strong>: <i>Юрченко Е.В.</i>
-    """
-    return HttpResponse(result)
+    return render(request, 'index.html')
 
 
 def about(request):
