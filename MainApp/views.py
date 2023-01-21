@@ -38,6 +38,8 @@ def item_page(request, id):
             context = {
                 "item": item
             }
+            # if item['quantity'] == 0:
+            #     item['quantity'] = "Товара нет на складе"
             return render(request, 'item_page.html', context)
     return HttpResponseNotFound(f"Товар с id={id} не найден")
 

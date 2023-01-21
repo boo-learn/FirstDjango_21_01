@@ -9,7 +9,7 @@
     /<a href="/">home</a>/<a href="/items">items</a>/<a href="/about">about</a>/
 </nav>
 <h1>{{ item.name }}</h1>
-<p> Количество: {{ item.quantity }} </p>
+<p> Количество: {{ item.quantity | default:"Товара нет на складе" }} </p>
 <a href="/items">Назад</a>
 </body>
 </html>
