@@ -46,6 +46,7 @@ def item_page(request, id):
             page = f"""
             <h1>{item['name']}</h1>
             <p> Количество: {item['quantity']} </p>
+            <a href="/items">Назад</a>
             """
             return HttpResponse(page)
     return HttpResponseNotFound(f"Товар с id={id} не найден")
@@ -54,6 +55,6 @@ def item_page(request, id):
 def items_list(request):
     page = "<h1>Список товаров</h1><ol>"
     for item in items:
-        page += f"<li>{item['name']}</li>"
+        page += f"<li><a href='/item/{item['id']}'>{item['name']}</a></li>"
     page += "</ol>"
     return HttpResponse(page)
