@@ -8,11 +8,8 @@
 <nav>
     /<a href="/">home</a>/<a href="/items">items</a>/<a href="/about">about</a>/
 </nav>
-<h1>Список товаров</h1>
-<ol>
-{% for item in items %}
-    <li><a href="/item/{{ item.id }}"> {{ item.name }}</a></li>
-{% endfor %}
-</ol>
+<h1>{{ item.name }}</h1>
+<p> Количество: {{ item.quantity }} </p>
+<a href="/items">Назад</a>
 </body>
 </html>
