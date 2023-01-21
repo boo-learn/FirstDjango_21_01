@@ -23,14 +23,10 @@ def main_page(request):
 
 
 def about(request):
-    result = f"""
-    Имя: <b>{author_info['name']}</b><br>
-    Фамилия: <b>{author_info['surname']}</b><br>
-    телефон: <b>{author_info['phone']}</b><br>
-    email: <b>{author_info['email']}</b><br>
-    """
-    return HttpResponse(result)
-
+    context = {
+        "author": author_info
+    }
+    return render(request, 'about.html', context)
 
 # item/1
 # item/2
