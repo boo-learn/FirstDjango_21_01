@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseNotFound
+from MainApp.models import Item
 
 author_info = {
     "name": "Евгений",
@@ -7,15 +8,6 @@ author_info = {
     "phone": "8-900-600-10-20",
     "email": "eyurchenko@specialist.ru"
 }
-
-items = [
-    {"id": 1, "name": "Кроссовки abibas", "quantity": 5},
-    {"id": 2, "name": "Куртка кожаная", "quantity": 2},
-    {"id": 5, "name": "Coca-cola 1 литр", "quantity": 12},
-    {"id": 7, "name": "Картофель фри", "quantity": 0},
-    {"id": 8, "name": "Кепка", "quantity": 124},
-    {"id": 10, "name": "Новый товар", "quantity": 5},
-]
 
 
 def main_page(request):
@@ -27,6 +19,7 @@ def about(request):
         "author": author_info
     }
     return render(request, 'about.html', context)
+
 
 # item/1
 # item/2
@@ -45,6 +38,7 @@ def item_page(request, id):
 
 
 def items_list(request):
+    items = Item.objects.all()
     context = {
         "items": items
     }
