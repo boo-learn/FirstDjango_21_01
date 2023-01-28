@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends 'base.html' %}
+ {% block style %}
     <style>
         .demo-class{
             color: red;
         }
     </style>
-</head>
-<body>
-<nav>
-    /<a href="/">home</a>/<a href="/items">items</a>/<a href="/about">about</a>/
-</nav>
+{% endblock %}
+
+{% block content %}
 <h1 class="demo-class">Приветствую!</h1>
 <a href="/items">Список товаров</a>
-</body>
-</html>
+{% endblock %}
