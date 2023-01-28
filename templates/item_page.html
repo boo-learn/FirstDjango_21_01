@@ -10,6 +10,6 @@
 </nav>
 <h1>{{ item.name }}</h1>
 <p> Количество: {{ item.count | default:"Товара нет на складе" }} </p>
-<a href="/items">Назад</a>
+<a href="{% url 'items-list' %}">Назад</a>
 </body>
 </html>
